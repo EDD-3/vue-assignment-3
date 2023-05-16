@@ -12,8 +12,8 @@ const app = Vue.createApp({
     },
     watch: {
         value(newValue) {
-            if (!!newValue) {
-                console.log()
+            // if (Boolean(newValue)) {
+                if(!!newValue) {
                 const that = this;
                 setTimeout( function () {
                     that.value = 0
@@ -24,13 +24,15 @@ const app = Vue.createApp({
 
     computed: {
         result () {
-            if (this.value < 37) {
-               return "Not there yet";
-            } else if ( this.value > 37) {
-                return "Too much!";
-            } else {
-                return this.value;
-            }
+            const value = this.value
+            return value === 37 ? value : value < 37 ? "Not there yet" : "Too much!";
+            // if (value === 37) {
+                // return value;
+            // } else if ( this.value < 37) {
+                // return "Not there yet";
+            // } else {
+            //     return "Too much!";
+            // }
         }
     },
     
